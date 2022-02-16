@@ -42,7 +42,7 @@ impl HassClient {
     /// Demonstrates basic usage.
     ///
     /// ```no_run
-    /// use hass_rs::client;
+    /// use hass_ws::client;
     ///
     /// #[async_std::main]
     /// async fn main() -> Result<(), Box<dyn std::error::Error>>{
@@ -89,7 +89,7 @@ impl HassClient {
     /// Demonstrates basic usage.
     ///
     /// ```no_run
-    /// use hass_rs::client;
+    /// use hass_ws::client;
     ///
     /// #[async_std::main]
     /// async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -134,8 +134,8 @@ impl HassClient {
     /// Demonstrates basic usage.
     ///
     /// ```no_run
-    /// use hass_rs::client;
-    /// use hass_rs::WSEvent;
+    /// use hass_ws::client;
+    /// use hass_ws::WSEvent;
     ///
     /// #[async_std::main]
     /// async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -171,7 +171,7 @@ impl HassClient {
     /// Demonstrates basic usage.
     ///
     /// ```no_run
-    /// use hass_rs::client;
+    /// use hass_ws::client;
     ///
     /// #[async_std::main]
     /// async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -199,7 +199,7 @@ impl HassClient {
     /// Demonstrates basic usage.
     ///
     /// ```no_run
-    /// use hass_rs::client;
+    /// use hass_ws::client;
     ///
     /// #[async_std::main]
     /// async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -245,7 +245,7 @@ impl HassClient {
     /// Demonstrates basic usage.
     ///
     /// ```no_run
-    /// use hass_rs::client;
+    /// use hass_ws::client;
     ///
     /// #[async_std::main]
     /// async fn main() -> Result<(), Box<dyn std::error::Error>>{
@@ -290,7 +290,7 @@ impl HassClient {
     /// Demonstrates basic usage.
     ///
     /// ```no_run
-    /// use hass_rs::client;
+    /// use hass_ws::client;
     ///
     /// #[async_std::main]
     /// async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -338,7 +338,7 @@ impl HassClient {
     /// Demonstrates basic usage.
     ///
     /// ```no_run
-    /// use hass_rs::client;
+    /// use hass_ws::client;
     /// use serde_json::json;
     ///
     /// #[async_std::main]

@@ -1,5 +1,5 @@
 use env_logger;
-use hass_rs::client;
+use hass_ws::client;
 use lazy_static::lazy_static;
 use serde_json::json;
 use std::env::var;

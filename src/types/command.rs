@@ -1,5 +1,5 @@
 use async_tungstenite::tungstenite::Message as TungsteniteMessage;
-use serde::Serialize;
+use serde_derive::Serialize;
 use serde_json::Value;
 
 /// This enum defines the type of commands that the client is allowed to send to the Websocket server

@@ -1,30 +1,32 @@
-# Hass-Rs
+# hass-ws
 
 A simple async Rust client library for interacting with Home Assistant websocket API.
 
+Forked from [hass-ws](https://github.com/danrusei/hass-ws)
+
 ## Configure:
 
-hass-rs supports tokio and async-std runtimes, by default it uses async-std, to use tokio change the feature flags in Cargo.toml
+hass-ws supports tokio and async-std runtimes, by default it uses async-std, to use tokio change the feature flags in Cargo.toml
 
 with [async-std](https://async.rs/) support 
 
 ```toml
 [dependencies]
-hass-rs = { version = "0.2", features = ["async-std-runtime"] }
+hass-ws = { version = "0.2", features = ["async-std-runtime"] }
 ```
 
 with [tokio](https://tokio.rs/) support 
 
 ```toml
 [dependencies]
-hass-rs = { version = "0.2", features = ["tokio-runtime"] }
+hass-ws = { version = "0.2", features = ["tokio-runtime"] }
 ```
 
 ## Example usage
 
 ```rust
 use env_logger;
-use hass_rs::client;
+use hass_ws::client;
 use lazy_static::lazy_static;
 use std::env::var;
 
@@ -58,7 +60,7 @@ Use docker to easily bootstrap a test environment.
 
 Steps:
 
-* clone the hass_rs github repository
+* clone the hass_ws github repository
 * execute the below command, which runs the docker homeassistant container in background 
 
 ```bash
@@ -66,7 +68,7 @@ $ docker run -d --name="home-assistant" -v /PATH_TO_YOUR_CONFIG:/config -v /etc/
 ```
 
 * login to Home Assistant web interface: http://localhost:8123/
-* go to `Profile` --> `Long-Lived Access Tokens` and create a token to be used by hass_rs client
+* go to `Profile` --> `Long-Lived Access Tokens` and create a token to be used by hass_ws client
 * set the environment variable ***export HASS_TOKEN=<YOUR_TOKEN_HERE>*** 
 * run the tests with `cargo test`
 * run the example scripts: `cargo run --example ping` or `cargo run --example fetch_items` or `cargo run --example subscribe_event` 
