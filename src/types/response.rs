@@ -72,7 +72,7 @@ pub struct WSEvent {
     pub event: HassEvent,
 }
 
-///this is the general response from the Websocket server when a requesthas been sent
+///this is the general response from the Websocket server when a request has been sent
 ///
 /// if "success" is true, then the "result" can be checked
 /// if "suceess" is false, then the "error" should be further explored
