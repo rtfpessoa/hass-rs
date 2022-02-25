@@ -3,7 +3,7 @@
 //! Provides an async connect and methods for issuing the supported commands.
 
 use crate::types::{
-    Ask, Auth, CallService, Command, HassConfig, HassEntity, HassServices, Response, WSEvent,
+    Ask, Auth, CallService, Command, HassConfig, HassEntity, HassServices, Response, WSEvent, WSProtocol,
 };
 use crate::{HassError, HassResult, WsConn};
 
@@ -23,8 +23,8 @@ pub struct HassClient {
 }
 
 /// establish the websocket connection to Home Assistant server
-pub async fn connect(host: &str, port: u16) -> HassResult<HassClient> {
-    let addr = format!("ws://{}:{}/api/websocket", host, port);
+pub async fn connect(host: &str, port: u16, protocol: Option<WSProtocol>) -> HassResult<HassClient> {
+    let addr = format!("{}://{}:{}/api/websocket", protocol.unwrap_or_default().value(), host, port);
     let url = url::Url::parse(&addr)?;
     let gateway = WsConn::connect(url).await?;
     Ok(HassClient { gateway })
