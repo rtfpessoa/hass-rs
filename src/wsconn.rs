@@ -90,7 +90,7 @@ impl WsConn {
         &mut self,
         event_name: &str,
         callback: F,
-    ) -> HassResult<String>
+    ) -> HassResult<u64>
     where
         F: Fn(WSEvent) + Send + 'static,
     {
@@ -109,7 +109,7 @@ impl WsConn {
             Response::Result(v) if v.success == true => {
                 let mut table = self.event_listeners.lock().await;
                 table.insert(v.id, Box::new(callback));
-                return Ok("Ok".to_owned());
+                return Ok(v.id);
             }
             Response::Result(v) if v.success == false => return Err(HassError::ReponseError(v)),
             _ => return Err(HassError::UnknownPayloadReceived),

@@ -21,3 +21,23 @@ pub struct Context {
     pub parent_id: Option<String>,
     pub user_id: Option<String>,
 }
+
+pub enum WSProtocol {
+    WS,
+    WSS,
+}
+
+impl WSProtocol {
+    pub fn value(&self) -> &'static str {
+        match *self {
+            WSProtocol::WS => "ws",
+            WSProtocol::WSS => "wss",
+        }
+    }
+}
+
+impl Default for WSProtocol {
+    fn default() -> Self {
+        WSProtocol::WSS
+    }
+}

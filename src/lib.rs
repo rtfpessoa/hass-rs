@@ -1,15 +1,15 @@
 //! # Async HomeAssistant Websocket Library
 //!
-//! Hass-rs is a HomeAssistant Websocket API client library.
+//! hass-ws is a HomeAssistant Websocket API client library.
 //!
 //! It is based on the [official API specifications](https://developers.home-assistant.io/docs/api/websocket).
 //!
 //! # Configuring async runtime
-//! hass_rs supports `async-std` and `tokio` runtimes, by default it uses `async-std`,
+//! hass_ws supports `async-std` and `tokio` runtimes, by default it uses `async-std`,
 //! to use `tokio` change the feature flags in `Cargo.toml`
 //!
 //! ```toml
-//! [dependencies.hass_rs]
+//! [dependencies.hass_ws]
 //! version = "0.1.0"
 //! default-features = false
 //! features = ["tokio-runtime"]
@@ -20,7 +20,7 @@
 //! It is fetching the Home Assistant Config
 //!
 //! ```no_run
-//! use hass_rs::client;
+//! use hass_ws::client;
 //! use lazy_static::lazy_static;
 //! use std::env::var;
 //!
@@ -58,8 +58,15 @@ pub use types::*;
 pub mod client;
 pub use client::{connect, HassClient};
 
-mod runtime;
-use runtime::{connect_async, task, WebSocket};
+#[cfg(feature = "async-std-runtime")]
+mod async_std;
+#[cfg(feature = "async-std-runtime")]
+use crate::async_std::{connect_async, task, WebSocket};
+
+#[cfg(all(feature = "tokio-runtime", not(feature = "async-std-runtime")))]
+mod tokio;
+#[cfg(all(feature = "tokio-runtime", not(feature = "async-std-runtime")))]
+use crate::tokio::{connect_async, task, WebSocket};
 
 mod wsconn;
 use wsconn::WsConn;
